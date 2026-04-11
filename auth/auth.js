@@ -43,6 +43,8 @@ window.addEventListener("load", () => {
   if (typeof flatpickr !== "undefined") {
     flatpickr("#dob");
   }
+  console.log(document.querySelector("#dob"));
+console.log(window.flatpickr);
 });
 }
 
