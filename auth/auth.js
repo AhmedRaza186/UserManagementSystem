@@ -38,7 +38,8 @@ function throwError(error) {
 }
 
 
-if (window.location.pathname.includes('signup.html')) {
+try{
+
 window.addEventListener("load", () => {
   if (typeof flatpickr !== "undefined") {
     flatpickr("#dob");
@@ -46,6 +47,9 @@ window.addEventListener("load", () => {
   console.log(document.querySelector("#dob"));
 console.log(window.flatpickr);
 });
+}
+catch(error){
+    console.error("Error initializing flatpickr:", error);
 }
 
 
