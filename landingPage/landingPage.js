@@ -4,7 +4,7 @@ let userTableBody = document.querySelector('#userTableBody')
 // Fetch users from API and populate the table
 async function fetchUsers() {
     try {
-        const fetchUsersApi = await fetch('https://usermanagementsystem-backend.railway.internal/api/users/all')
+        const fetchUsersApi = await fetch('https://usermanagementsystem-backend-production.up.railway.app/api/users/all')
         let users = await fetchUsersApi.json()
         console.log(users.data);
         let usersTable = users.data.map(user => {

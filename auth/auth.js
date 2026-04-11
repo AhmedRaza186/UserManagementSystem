@@ -102,7 +102,7 @@ async function handleSignup() {
 async function createUser(fullName, email, age, password) {
 
     try {
-        const addUserApi = await fetch('https://usermanagementsystem-backend.railway.internal/api/auth/signup', {
+        const addUserApi = await fetch('https://usermanagementsystem-backend-production.up.railway.app/api/auth/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -148,7 +148,7 @@ function handleLogin(event) {
 // Function to login user (simulate API call)
 async function loginUser(email, password) {
     try {
-        const loginUserApi = await fetch('https://usermanagementsystem-backend.railway.internal/api/auth/login', {
+        const loginUserApi = await fetch('https://usermanagementsystem-backend-production.up.railway.app/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
