@@ -9,7 +9,7 @@ let errorText = document.querySelector('#errorText');
 
 const storedUser = JSON.parse(localStorage.getItem('UserManagement-loginedUser'))
 if (storedUser) {
-    window.location.href = '../landingPage/landingPage.html'
+    window.location.href = '../dashboard/dashboard.html'
 }
 
 // Password visibility toggle
@@ -118,7 +118,7 @@ async function createUser(fullName, email, age, password) {
     return;
 }
         console.log('Redirecting now...');
-        window.location.href = '../landingPage/landingPage.html'
+        window.location.href = '../dashboard/dashboard.html'
     }
     catch (error) {
         console.error('Error creating user:', error);
@@ -167,7 +167,7 @@ async function loginUser(email, password) {
 }
          localStorage.setItem('UserManagement-loginedUser', JSON.stringify(loginUserResponse.data))
         console.log('Redirecting now...');
-        window.location.href = '../landingPage/landingPage.html'
+        window.location.href = '../dashboard/dashboard.html'
 
     }
      catch (error) {
