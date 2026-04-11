@@ -1,0 +1,389 @@
+/* --- Landing Page Specific Styles --- */
+:root {
+    --primary-color: #2563EB;
+    --primary-hover: #1D4ED8;
+    --secondary-color: #FFFFFF;
+    --background-color: #F8FAFC;
+    --text-color: #1E293B;
+    --text-light: #64748B;
+    --border-color: #E2E8F0;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+a{
+    text-decoration: none;
+}
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+nav {
+    width: 100%;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px); 
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+   
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    letter-spacing: -0.5px;
+}
+
+
+.brand-name span {
+    color: var(--primary-color);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+.btn-logout {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: transparent;
+    color: var(--text-light);
+    border: 1.5px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+    background-color: #FEE2E2; /* Light red background */
+    color: #DC2626;           /* Solid red text */
+    border-color: #FCA5A5;
+}
+
+.btn-logout svg {
+    transition: transform 0.2s ease;
+}
+
+.btn-logout:hover svg {
+    transform: translateX(3px); /* Small nudge animation */
+}
+.btn-outline {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    padding: 8px 16px;
+    border: 1.5px solid var(--primary-color);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+.btn-outline:last-child{
+      background-color: var(--primary-color);
+    color: white;
+}
+.btn-outline:last-child:hover{
+      color: var(--primary-color);
+    background-color: white;
+}
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+/* --- Dashboard Layout --- */
+.dashboard-wrapper {
+    max-width: 1200px;
+    margin: 100px auto 40px;
+    padding: 0 20px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 30px;
+}
+
+.header-text h1 { font-size: 2rem; color: var(--text-color); }
+.header-text p { color: var(--text-light); }
+
+/* --- Search & Filters --- */
+.controls-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+    border: 1px solid var(--border-color);
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    margin-bottom: 0; /* Override previous margin */
+}
+
+.filter-group {
+    display: flex;
+    gap: 12px;
+}
+
+.filter-group select {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* --- Table Styling --- */
+.table-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #F8FAFC;
+    padding: 16px;
+    text-align: left;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    border-bottom: 1px solid var(--border-color);
+}
+
+td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.user-info { display: flex; align-items: center; gap: 12px; }
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.user-name { font-weight: 600; margin-bottom: 2px; }
+.user-email { font-size: 0.85rem; color: var(--text-light); }
+
+/* Align actions to the right for a cleaner look */
+.text-right {
+    text-align: right;
+}
+
+.action-btns {
+    justify-content: flex-end;
+}
+
+/* "You" Badge Styling */
+.me-badge {
+    font-size: 0.75rem;
+    background: #DCFEF0;
+    color: #065F46;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+    font-weight: 700;
+}
+
+.my-avatar {
+    background: #059669 !important; /* Different color for your own avatar */
+}
+
+.current-user-row {
+    background-color: #F0FDF4; /* Light green tint for your own row */
+}
+.action-btns { display: flex; gap: 8px; }
+.icon-btn {
+    border: none;
+    background: #f1f5f9;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.icon-btn.delete:hover { background: #fee2e2; color: #dc2626; }
+.icon-btn.edit:hover { background: #e0f2fe; color: var(--primary-color); }
+
+/* --- Responsive Dashboard Logic --- */
+
+@media (max-width: 768px) {
+    .btn-logout {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    .nav-link {
+        font-size: 0.9rem;
+    }
+    .brand-name {
+        font-size: 1.25rem;
+    }
+     .nav-container {
+        padding: 0 1rem;    
+     }
+    /* 1. Header & Controls */
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .controls-card {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .filter-group {
+        width: 100%;
+    }
+
+    .filter-group select {
+        flex: 1; /* Selects take full width on mobile */
+    }
+
+    /* 2. The Table-to-Card Transformation */
+    
+    /* Hide the table header on mobile */
+    thead {
+        display: none;
+    }
+
+    /* Force table to behave like a container */
+    table, tbody, tr, td {
+        display: block;
+        width: 100%;
+    }
+
+    tr {
+        background: white;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        border: 1px solid var(--border-color);
+        padding: 15px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    /* Adjust Row background for the "Current User" */
+    .current-user-row {
+        border-left: 4px solid #10B981; /* Stronger indicator for "Me" on mobile */
+    }
+
+    td {
+        text-align: left;
+        padding: 8px 0;
+        border-bottom: 1px solid #f1f5f9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    td:last-child {
+        border-bottom: none;
+        padding-top: 15px;
+    }
+
+    /* Adding labels to data so the user knows what they are looking at */
+    td::before {
+        content: attr(data-label); /* Pulls text from HTML data-label attribute */
+        font-weight: 700;
+        color: var(--text-light);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+    }
+
+    /* User Info styling for mobile card top */
+    .user-info {
+        gap: 10px;
+    }
+
+    .avatar {
+        width: 35px;
+        height: 35px;
+    }
+
+    /* Make buttons bigger for touch targets */
+    .icon-btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}

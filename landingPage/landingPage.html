@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management System</title>
+    <link rel="stylesheet" href="landingPage.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <span class="brand-name">User<span>Management</span></span>
+            </div>
+
+            <div class="nav-right">
+                <a href="#" class="nav-link disabled">Support</a>
+                <button id="logoutBtn" class="btn-logout">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="dashboard-wrapper">
+        <header class="dashboard-header">
+            <div class="header-text">
+                <h1>Member Directory</h1>
+                <p>Browse all registered members in the system.</p>
+            </div>
+        </header>
+
+        <section class="controls-card">
+            <div class="search-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" class="search-icon">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="userSearch" placeholder="Search members..." onkeyup="handleSearch()">
+            </div>
+            <div class="filter-group">
+                <select id="roleFilter" onchange="applyFilters()">
+                    <option value="all">All Roles</option>
+                    <option value="admin">Admin</option>
+                    <option value="editor">Editor</option>
+                    <option value="viewer">Viewer</option>
+                </select>
+
+                <select id="sortOrder" onchange="applySorting()">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="name-asc">Name (A-Z)</option>
+                    <option value="name-desc">Name (Z-A)</option>
+                </select>
+            </div>
+        </section>
+
+        <div class="table-container">
+            <table id="usersTable">
+                <thead>
+                    <tr>
+                        <th>Member</th>
+                        <th>Email Address</th>
+                        <th>Joined Date</th>
+                        <th>Age</th>
+                        <th class="text-right">Account Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
+<!--              
+                    <tr>
+                        <td data-label="Member">
+                            <div class="user-info">
+                                <div class="avatar my-avatar">AR</div>
+                                <p class="user-name">Ahmed Raza <span class="me-badge">(You)</span></p>
+                            </div>
+                        </td>
+                        <td data-label="Email Address">ahmed@example.com</td>
+                        <td data-label="Joined Date">Oct 12, 2025</td>
+                        <td data-label="Actions" class="text-right">
+                            <div class="action-btns">
+                                <button class="icon-btn edit disabled">Edit</button>
+                                <button class="icon-btn delete disabled">Delete</button>
+                            </div>
+                        </td>
+                    </tr> -->
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="landingPage.js"></script>
+
+
+</body>
+
+</html>

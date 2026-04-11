@@ -1,0 +1,296 @@
+:root {
+    --primary-color: #2563EB;
+    --primary-hover: #1D4ED8;
+    --secondary-color: #FFFFFF;
+    --background-color: #F8FAFC;
+    --text-color: #1E293B;
+    --text-light: #64748B;
+    --border-color: #E2E8F0;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+       --error: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+a{
+    text-decoration: none;
+}
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+nav {
+    width: 100%;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* Glassmorphism Effect */
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px); 
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+   
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    letter-spacing: -0.5px;
+}
+
+/* Bold only the second word for a modern tech look */
+.brand-name span {
+    color: var(--primary-color);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.btn-outline {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    padding: 8px 16px;
+    border: 1.5px solid var(--primary-color);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Add padding to body so content doesn't hide under fixed nav
+body {
+    padding-top: 64px;
+} */
+
+/* Main Container */
+.signup-container {
+    background-color: var(--secondary-color);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 1000px;
+    height: 650px; /* Fixed height for better alignment */
+    display: flex;
+    overflow: hidden; /* Clips image border-radius */
+    margin-top: 60px;
+}
+
+.side-img {
+    width: 45%;
+    background: url('../Gemini_Generated_Image_m6bvi2m6bvi2m6bv.png') no-repeat center center;
+    background-size: cover;
+}
+
+.form-section {
+    width: 55%;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-header {
+    margin-bottom: 2rem;
+}
+
+.form-header h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.form-header p {
+    color: var(--text-light);
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.icon {
+  position: absolute;
+  width: 20px;
+  height: 100%;
+  right: 10px;
+  top: 100%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Ensure the input doesn't hide text behind the icon */
+.password-wrapper input {
+    padding-right: 45px; 
+}
+
+.eye-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+    padding: 0;
+}
+
+.eye-btn:hover {
+    color: var(--primary-color);
+}
+
+.eye-btn:focus {
+    outline: none;
+}
+.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+.forgot-pass{
+    font-size: 0.85rem;
+    color: var(--text-light);
+  
+}
+#errorText {
+    color: var(--error);
+    font-size: 0.85rem;
+    margin-top: 12px;
+    background: rgba(239, 68, 68, 0.1);
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    display: none;
+    font-weight: 600;
+    font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+}
+.submit-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.login-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .side-img {
+        display: none;
+    }
+    .form-section {
+        width: 100%;
+        padding: 2rem;
+    }
+}
+@media (max-width:468px) {
+    .brand-name{
+        font-size: 1.2rem;
+    }
+    .nav-link {
+        font-size: 0.85rem;
+    }
+}
