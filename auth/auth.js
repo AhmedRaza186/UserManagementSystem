@@ -39,12 +39,11 @@ function throwError(error) {
 
 
 if (window.location.pathname.includes('signup.html')) {
-    // Initialize flatpickr for date of birth input
-    flatpickr("#dob", {
-        dateFormat: "d/m/Y",
-        maxDate: "today", // future dates block
-
-    })
+window.addEventListener("load", () => {
+  if (typeof flatpickr !== "undefined") {
+    flatpickr("#dob");
+  }
+});
 }
 
 
