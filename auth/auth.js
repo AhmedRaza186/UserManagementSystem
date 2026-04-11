@@ -40,13 +40,11 @@ function throwError(error) {
 
 try{
 
-window.addEventListener("load", () => {
-  if (typeof flatpickr !== "undefined") {
     flatpickr("#dob");
-  }
+
   console.log(document.querySelector("#dob"));
 console.log(window.flatpickr);
-});
+
 }
 catch(error){
     console.error("Error initializing flatpickr:", error);
