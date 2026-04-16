@@ -731,8 +731,23 @@ th:nth-child(4) { text-align: center; }
     td:nth-child(4)::before { content: "Age"; }
     td:nth-child(5)::before { content: "Phone"; }
     td:nth-child(6)::before { content: "Actions"; }
+    /* Member Info (Name + Avatar) */
+th:nth-child(1), td:nth-child(1) { width: 100%;justify-content: space-between; } 
+/* Email Address */
+th:nth-child(2), td:nth-child(2) { width: 100% ;justify-content: space-between;} 
+/* Joined Date */
+th:nth-child(3), td:nth-child(3) { width: 100% ;justify-content: space-between;} 
+/* Age */
+th:nth-child(4), td:nth-child(4) { width: 100% ;justify-content: space-between; } 
+/* Phone Number */
+th:nth-child(5), td:nth-child(5) { width: 100% ;justify-content: space-between;} 
+/* Actions */
+th:nth-child(6), td:nth-child(6) { width: 100%;;justify-content: space-between; } 
+
     /* User Info styling for mobile card top */
     .user-info {
+         justify-content: flex-end !important; /* Align avatar and name to the right on mobile */
+        flex-direction: row;
         gap: 10px;
     }
     

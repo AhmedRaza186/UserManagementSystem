@@ -130,10 +130,12 @@ async function fetchUsers() {
                                 : `<img src="../defaultuser.png" />`
                             }
                         </div>
+                        <div class="user-details">
                         <p class="user-name">
                             ${user.fullName}
                             ${isCurrentUser ? '<span class="me-badge">(You)</span>' : ''}
                         </p>
+                        </div>
                     </div>
                 </td>
 
