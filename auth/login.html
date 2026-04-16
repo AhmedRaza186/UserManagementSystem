@@ -52,13 +52,35 @@
                     <a href="#" class="forgot-pass disabled">Forgot Password?</a>
                 </div>
                 <p id="errorText"></p>
-                <button type="submit" class="submit-btn">Login</button>
+                <button type="submit" class="submit-btn" id="form-submit">Login</button>
             </form>
 
             <p class="login-link">New here? <a href="./signup.html">Create Account</a></p>
         </div>
     </div>
+    <div class=" otp-section">
+<div class="form-header">
+    <h3>Verify Your Email</h3>
+    <p>We've sent a 6-digit code to your email. Please enter it below.</p>
+</div>
 
+<form id="otpForm">
+    <div class="otp-input-wrapper">
+        <input type="text" maxlength="1" class="otp-box" inputmode="numeric" required>
+        <input type="text" maxlength="1" class="otp-box" inputmode="numeric" required>
+        <input type="text" maxlength="1" class="otp-box" inputmode="numeric" required>
+        <input type="text" maxlength="1" class="otp-box" inputmode="numeric" required>
+        <input type="text" maxlength="1" class="otp-box" inputmode="numeric" required>
+        <input type="text" maxlength="1" class="otp-box" inputmode="numeric" required>
+    </div>
+
+    <button type="submit" class="submit-btn" id="otp-submit">Verify Account</button>
+</form>
+
+<div class="login-link">
+    Didn't receive the code? <a href="#" id="resendCode">Resend OTP</a>
+</div>
+</div>
     <script src="auth.js" type="module"></script>
 </body>
 

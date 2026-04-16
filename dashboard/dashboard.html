@@ -44,38 +44,40 @@
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                <input type="text" id="userSearch" placeholder="Search members..." onkeyup="handleSearch()">
+                <input type="text" id="userSearch" placeholder="Search members...">
             </div>
             <div class="filter-group">
-                <select id="roleFilter" onchange="applyFilters()">
-                    <option value="all">All Roles</option>
-                    <option value="admin">Admin</option>
-                    <option value="editor">Editor</option>
-                    <option value="viewer">Viewer</option>
-                </select>
 
-                <select id="sortOrder" onchange="applySorting()">
-                    <option value="newest">Newest First</option>
-                    <option value="oldest">Oldest First</option>
-                    <option value="name-asc">Name (A-Z)</option>
-                    <option value="name-desc">Name (Z-A)</option>
+                <select id="limitFilter">
+                    <option value="">All</option>
+                    <option value="5">1-5</option>
+                    <option value="10">1-10</option>
+                    <option value="20">1-20</option>
+                </select>
+                
+                <select id="sortOrder">
+                    <option value="">Default</option>
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                    <option value="age">Age</option>
                 </select>
             </div>
-        </section>
+    </section>
 
-        <div class="table-container">
-            <table id="usersTable">
-                <thead>
-                    <tr>
-                        <th>Member</th>
-                        <th>Email Address</th>
-                        <th>Joined Date</th>
-                        <th>Age</th>
-                        <th class="text-right">Account Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="userTableBody">
-<!--              
+    <div class="table-container">
+        <table id="usersTable">
+            <thead>
+                <tr>
+                    <th>Member</th>
+                    <th>Email Address</th>
+                    <th>Joined Date</th>
+                    <th>Age</th>
+                    <th>Phone NO</th>
+                    <th class="text-right">Account Actions</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+                <!--              
                     <tr>
                         <td data-label="Member">
                             <div class="user-info">
@@ -93,11 +95,65 @@
                         </td>
                     </tr> -->
 
-                </tbody>
-            </table>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <div id="editModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Update Profile</h3>
+                <button class="close-btn closeEditModal">&times;</button>
+            </div>
+
+            <form id="updateProfileForm" enctype="multipart/form-data">
+                <div class="profile-upload-section">
+                    <div class="image-preview" id="imagePreview">
+                        <img src="./default-avatar.png" alt="Profile Preview" id="profileImg">
+                    </div>
+                    <label for="profilePic" class="upload-label">
+                        <span>Change Photo</span>
+                        <input type="file" id="profilePic" name="profilePic" accept="image/*" hidden>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Ahmed Raza">
+                </div>
+
+                <div class="grid-inputs">
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" placeholder="17">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+92 300 1234567">
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary closeEditModal">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                </div>
+            </form>
         </div>
     </div>
-    <script src="dashboard.js"></script>
+    <div id="deleteModal" class="modal-overlay">
+        <div class="modal-content delete-modal">
+            <div class="modal-icon">⚠️</div>
+            <h3>Delete Account?</h3>
+            <p>This action is permanent. All your data, including your profile and activity, will be removed from our
+                servers forever.</p>
+
+            <div class="modal-actions full-width">
+                <button type="button" class="btn-secondary closeDeleteModal">No, Keep it</button>
+                <button type="button" id="confirmDeleteBtn" class="btn-danger">Yes, Delete Account</button>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="dashboard.js"></script>
 
 
 </body>

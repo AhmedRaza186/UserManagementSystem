@@ -8,6 +8,7 @@
     --text-light: #64748B;
     --border-color: #E2E8F0;
     --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+       --error: #ef4444;
 }
 
 * {
@@ -23,6 +24,71 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
 }
+
+/* --- Modern Toast Notifications --- */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.toast {
+    min-width: 320px;
+    max-width: 400px;
+    background: white;
+    padding: 16px 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--border-color);
+    border-left: 6px solid #CBD5E1; /* Default status bar */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: toastSlideIn 0.4s ease-out;
+}
+
+/* Status Variants */
+.toast-success {
+    border-left-color: var(--primary-color);
+}
+.toast-success i {
+    color: var(--primary-color);
+}
+
+.toast-error {
+    border-left-color: var(--error);
+}
+.toast-error i {
+    color: var(--error);
+}
+
+.toast span {
+    color: var(--text-color);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.toast i {
+    font-size: 1.2rem;
+}
+
+/* Animation */
+@keyframes toastSlideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
 nav {
     width: 100%;
     height: 64px;
@@ -224,41 +290,109 @@ td {
     border-bottom: 1px solid var(--border-color);
     vertical-align: middle;
 }
+/* --- Balanced Table Column Styling --- */
 
-.user-info { display: flex; align-items: center; gap: 12px; }
+/* --- Rebalanced for 6 Columns --- */
+
+/* Member Info (Name + Avatar) */
+th:nth-child(1), td:nth-child(1) { width: 25%; } 
+/* Email Address */
+th:nth-child(2), td:nth-child(2) { width: 22%; } 
+/* Joined Date */
+th:nth-child(3), td:nth-child(3) { width: 15%; } 
+/* Age */
+th:nth-child(4), td:nth-child(4) { width: 8%; text-align: center; } 
+/* Phone Number */
+th:nth-child(5), td:nth-child(5) { width: 15%; text-align: center;} 
+/* Actions */
+th:nth-child(6), td:nth-child(6) { width: 15%; } 
+
+/* Center align headers for Age to look cleaner */
+th:nth-child(4) { text-align: center; }
+
+/* Refined Phone Text */
+.phone-text {
+    font-family: inherit; /* JetBrains Mono is cool, but stick to Inter for a cleaner look if not installed */
+    font-size: 0.85rem;
+    color: var(--text-color);
+     
+}
+
+/* Ensure empty phone numbers don't look broken */
+.phone-text:empty::after {
+    content: "Not provided";
+    color: var(--text-light);
+    font-style: italic;
+    font-size: 0.8rem;
+
+}
+
+/* --- User Info & Avatar Refinement --- */
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Increased space between avatar and text */
+}
+
 .avatar {
-    width: 40px;
-    height: 40px;
-    background: var(--primary-color);
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--primary-color), #60A5FA); /* Modern gradient */
     color: white;
-    border-radius: 50%;
+    border-radius: 12px; /* Squircle look is more modern than a circle */
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0; /* Prevents avatar from squishing on small screens */
+    overflow: hidden;
 }
 
-.user-name { font-weight: 600; margin-bottom: 2px; }
-.user-email { font-size: 0.85rem; color: var(--text-light); }
-
-/* Align actions to the right for a cleaner look */
-.text-right {
-    text-align: right;
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.action-btns {
-    justify-content: flex-end;
+/* Specific styling for your own avatar */
+.my-avatar {
+    background: linear-gradient(135deg, #059669, #34D399) !important;
 }
 
-/* "You" Badge Styling */
+/* User Text Layout */
+.user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.user-name {
+    font-weight: 700;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+}
+
+.user-email {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+/* Make the "You" badge look cleaner */
 .me-badge {
-    font-size: 0.75rem;
+    font-size: 0.65rem;
+    text-transform: uppercase;
     background: #DCFEF0;
     color: #065F46;
-    padding: 2px 6px;
-    border-radius: 4px;
-    margin-left: 8px;
-    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-left: 10px;
+    letter-spacing: 0.5px;
 }
 
 .my-avatar {
@@ -276,6 +410,7 @@ td {
     border-radius: 6px;
     cursor: pointer;
     transition: 0.2s;
+    
 }
 .disabled {
     cursor: not-allowed;
@@ -285,9 +420,228 @@ td {
 .icon-btn.delete:hover { background: #fee2e2; color: #dc2626; }
 .icon-btn.edit:hover { background: #e0f2fe; color: var(--primary-color); }
 
-/* --- Responsive Dashboard Logic --- */
 
-@media (max-width: 768px) {
+/* --- Modal Specific Styles (Integrated) --- */
+
+/* 1. Reset for Modal Inputs (Fixes the "bad styling" look) */
+/* --- Close Button Refinement --- */
+.close-btn {
+    background: var(--background-color); /* Light gray background */
+    border: none;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background-color: var(--error) ;
+    color: var(--background-color);
+
+}
+
+/* Ensure the modal header aligns it perfectly */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.modal-content input {
+    width: 100%;
+    padding: 12px 16px;
+    margin-top: 8px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    background-color: #F8FAFC;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Fixes width overflow */
+}
+
+.modal-content input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.modal-content label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-light);
+    display: block;
+    margin-top: 15px;
+}
+
+/* 2. Modal Overlay & Content */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    display: none; 
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 450px;
+    padding: 32px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease-out;
+}
+
+/* 3. Button Refinements inside Modal */
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.modal-actions button {
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal-actions .btn-primary {
+    border: none;
+}
+.modal-actions .btn-primary:hover{
+    background: var(--primary-color);
+    color: var(--background-color);
+}
+
+.modal-actions .btn-secondary {
+    background-color: white;
+    color: var(--text-light);
+    border: 1.5px solid var(--border-color);
+}
+
+.modal-actions .btn-secondary:hover {
+    background-color: #F1F5F9;
+    color: var(--text-color);
+}
+
+/* 4. Profile Picture UI */
+.profile-upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.image-preview {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--primary-color);
+    background-color: #E2E8F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image isn't stretched */
+}
+
+/* 5. Small Grid Fix */
+.grid-inputs {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 15px;
+}
+
+/* --- Animations --- */
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+/* --- Delete Modal Specific Styles --- */
+
+.delete-modal {
+    text-align: center;
+    max-width: 400px; /* Slightly smaller than the edit modal */
+}
+
+.modal-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.delete-modal h3 {
+    color: #991B1B; /* Dark red */
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.delete-modal p {
+    color: var(--text-light);
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+/* Red Danger Button */
+.btn-danger {
+    background-color: #DC2626;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-danger:hover {
+    background-color: #B91C1C;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+}
+
+/* Stack buttons on mobile for easier tapping */
+.modal-actions.full-width {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* --- Responsive Dashboard Logic --- */
+/* Responsive adjustment for the new column */
+    @media (max-width: 1024px) {
+        th:nth-child(2), td:nth-child(2) { display: none; } /* Hide email on medium screens to save space */
+    }
+    
+    
+    
+    @media (max-width: 768px) {
     .btn-logout {
         padding: 6px 12px;
         font-size: 0.8rem;
@@ -298,42 +652,42 @@ td {
     .brand-name {
         font-size: 1.25rem;
     }
-     .nav-container {
+    .nav-container {
         padding: 0 1rem;    
-     }
+    }
     /* 1. Header & Controls */
     .dashboard-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
     }
-
+    
     .controls-card {
         flex-direction: column;
         padding: 15px;
     }
-
+    
     .filter-group {
         width: 100%;
     }
-
+    
     .filter-group select {
         flex: 1; /* Selects take full width on mobile */
     }
-
+    
     /* 2. The Table-to-Card Transformation */
     
     /* Hide the table header on mobile */
     thead {
         display: none;
     }
-
+    
     /* Force table to behave like a container */
     table, tbody, tr, td {
         display: block;
         width: 100%;
     }
-
+    
     tr {
         background: white;
         border-radius: 12px;
@@ -342,12 +696,12 @@ td {
         padding: 15px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
-
+    
     /* Adjust Row background for the "Current User" */
     .current-user-row {
         border-left: 4px solid #10B981; /* Stronger indicator for "Me" on mobile */
     }
-
+    
     td {
         text-align: left;
         padding: 8px 0;
@@ -356,12 +710,12 @@ td {
         justify-content: space-between;
         align-items: center;
     }
-
+    
     td:last-child {
         border-bottom: none;
         padding-top: 15px;
     }
-
+    
     /* Adding labels to data so the user knows what they are looking at */
     td::before {
         content: attr(data-label); /* Pulls text from HTML data-label attribute */
@@ -370,20 +724,32 @@ td {
         font-size: 0.8rem;
         text-transform: uppercase;
     }
-
+    /* ... your existing mobile styles ... */
+    td:nth-child(1)::before { content: "Member"; }
+    td:nth-child(2)::before { content: "Email"; }
+    td:nth-child(3)::before { content: "Joined"; }
+    td:nth-child(4)::before { content: "Age"; }
+    td:nth-child(5)::before { content: "Phone"; }
+    td:nth-child(6)::before { content: "Actions"; }
     /* User Info styling for mobile card top */
     .user-info {
         gap: 10px;
     }
-
+    
     .avatar {
         width: 35px;
         height: 35px;
     }
-
+    
     /* Make buttons bigger for touch targets */
     .icon-btn {
         padding: 10px 16px;
         font-size: 0.9rem;
+    }
+}
+@media (min-width: 600px) {
+    .modal-actions.full-width {
+        flex-direction: row;
+        justify-content: center;
     }
 }
