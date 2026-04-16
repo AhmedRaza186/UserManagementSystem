@@ -261,27 +261,65 @@ nav {
     line-height: 1.6;
 }
 
-/* 5. Mobile Responsiveness */
 @media (max-width: 968px) {
     .hero {
         flex-direction: column;
         text-align: center;
-        padding-top: 120px;
+        padding: 120px 5% 80px;
+        gap: 30px;
+        min-height: auto;
     }
 
     .hero-content h1 {
-        font-size: 2.8rem;
+        font-size: 2.6rem;
+        line-height: 1.2;
     }
 
     .hero-content p {
-        margin: 0 auto 30px;
+        font-size: 1.05rem;
+        margin: 0 auto 25px;
+        max-width: 90%;
     }
 
     .hero-btns {
         justify-content: center;
+        flex-wrap: wrap;
     }
 
     .hero-image img {
-        transform: none; /* Remove 3D effect on mobile */
+        max-width: 90%;
+        transform: none;
+    }
+
+    .section-title h2 {
+        font-size: 2rem;
+    }
+}
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .feature-card {
+        padding: 28px;
+    }
+
+    .section-title h2 {
+        font-size: 1.7rem;
     }
 }

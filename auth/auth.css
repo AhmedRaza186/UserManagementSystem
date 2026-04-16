@@ -342,6 +342,7 @@ input:focus {
 }
 .otp-section {
     display: none;
+}
 
 .otp-input-wrapper {
     display: flex;
