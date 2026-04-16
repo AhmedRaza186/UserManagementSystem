@@ -328,4 +328,8 @@ nav {
     .section-title h2 {
         font-size: 1.7rem;
     }
+    .nav-right {
+    gap: 10px;
+    padding-left: 18px;
+    }
 }
