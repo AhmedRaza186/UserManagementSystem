@@ -148,7 +148,7 @@ async function handleSignup() {
 async function createUser(fullName, email, age, password) {
 
     try {
-        const addUserApi = await fetch('https://usermanagementsystem-backend-production.up.railway.app/api/auth/signup', {
+        const addUserApi = await fetch('http://localhost:8000/api/auth/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -199,7 +199,7 @@ function handleLogin(event) {
 // Function to login user (simulate API call)
 async function loginUser(email, password) {
     try {
-        const loginUserApi = await fetch('https://usermanagementsystem-backend-production.up.railway.app/api/auth/login', {
+        const loginUserApi = await fetch('http://localhost:8000/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -248,7 +248,7 @@ async function verifyOtp(email) {
     otp = +(otp.join(''))
 
     try {
-        let otpVerificationApi = await fetch('https://usermanagementsystem-backend-production.up.railway.app/api/auth/verify-otp', {
+        let otpVerificationApi = await fetch('http://localhost:8000/api/auth/verify-otp', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
