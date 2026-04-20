@@ -10,6 +10,10 @@ let signupContainer = document.querySelector('.signup-container')
 let otpContainer = document.querySelector('.otp-section')
 let otpSubmitBtn = document.querySelector('#otp-submit')
 let otpInputs = document.querySelectorAll('.otp-input-wrapper input')
+let resendCodeBtn = document.querySelector('#resendCode')
+let otpCountdownContainer = document.querySelector('#otpCountdown')
+let timerDisplay = document.querySelector('#timer')
+let timerInterval;
 
 
 const storedUser = JSON.parse(localStorage.getItem('UserManagement-loginedUser'))
@@ -280,6 +284,60 @@ async function verifyOtp(email) {
 
 }
 
+// Countdown timer logic
+function startCountdown(duration) {
+    clearInterval(timerInterval);
+    let timer = duration;
+    otpCountdownContainer.style.display = 'block';
+    resendCodeBtn.style.pointerEvents = 'none';
+    resendCodeBtn.style.opacity = '0.5';
+
+    const updateTimer = () => {
+        let minutes = Math.floor(timer / 60);
+        let seconds = timer % 60;
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        timerDisplay.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            clearInterval(timerInterval);
+            otpCountdownContainer.style.display = 'none';
+            resendCodeBtn.style.pointerEvents = 'auto';
+            resendCodeBtn.style.opacity = '1';
+        }
+    };
+
+    updateTimer();
+    timerInterval = setInterval(updateTimer, 1000);
+}
+
+// Resend OTP logic
+async function handleResendOtp(email) {
+    try {
+        const resendApi = await fetch('https://user-management-system-backend-mu.vercel.app/api/auth/resend-otp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email })
+        });
+
+        const resendResponse = await resendApi.json();
+
+        if (!resendApi.ok || !resendResponse.status) {
+            showToast(resendResponse.message || 'Failed to resend OTP', 'error');
+            return;
+        }
+
+        showToast('New OTP sent successfully', 'success');
+        startCountdown(300); // Reset to 5 minutes
+    } catch (error) {
+        showToast('Error resending OTP: ' + error.message, 'error');
+    }
+}
+
 
 // Data validation function
 function checkData(fullName, email, age, password) {
@@ -353,6 +411,8 @@ function calculateAge(DOB) {
 function otpPageHandler(email) {
     signupContainer.style.display = 'none'
     otpContainer.style.display = 'block'
+    
+    startCountdown(300); // 5 minutes countdown
 
 
     otpInputs.forEach((input, index) => {
@@ -412,4 +472,9 @@ function otpPageHandler(email) {
         e.preventDefault()
         verifyOtp(email)
     })
-}
+
+    resendCodeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        handleResendOtp(email);
+    });
+}
