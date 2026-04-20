@@ -332,7 +332,7 @@ async function handleResendOtp(email) {
         }
 
         showToast('New OTP sent successfully', 'success');
-        startCountdown(300); // Reset to 5 minutes
+        startCountdown(60); // 1 minute
     } catch (error) {
         showToast('Error resending OTP: ' + error.message, 'error');
     }
@@ -412,7 +412,7 @@ function otpPageHandler(email) {
     signupContainer.style.display = 'none'
     otpContainer.style.display = 'block'
     
-    startCountdown(300); // 5 minutes countdown
+    startCountdown(60); // 1 minute countdown
 
 
     otpInputs.forEach((input, index) => {
