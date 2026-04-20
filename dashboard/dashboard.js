@@ -57,7 +57,7 @@ console.log(currentUserToken);
 async function getCurrentUser() {
     if (!currentUserToken) return null;
 
-    const res = await fetch('http://localhost:8000/api/users', {
+    const res = await fetch('https://user-management-system-backend-mu.vercel.app/api/users', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ async function fetchUsers() {
         const sort = document.getElementById("sortOrder").value;
 
         // 🔹 Build API URL
-        let url = `http://localhost:8000/api/users/all?`;
+        let url = `https://user-management-system-backend-mu.vercel.app/api/users/all?`;
         if (search) url += `search=${search}&`;
         if (limit) url += `limit=${limit}&`;
         if (sort) url += `sort=${sort}&`;
@@ -263,7 +263,7 @@ updateProfileForm.addEventListener('submit', async (e) => {
 
 
         // 4. Send the data to your Node.js Backend
-        const response = await fetch('http://localhost:8000/api/users', {
+        const response = await fetch('https://user-management-system-backend-mu.vercel.app/api/users', {
             method: 'PUT', // Use PATCH for partial updates
             headers: {
                 'Content-Type': 'application/json',
@@ -295,7 +295,7 @@ updateProfileForm.addEventListener('submit', async (e) => {
 deleteBtn.addEventListener('click', deleteUser)
 
 async function deleteUser() {
-    const deleteApi = await fetch('http://localhost:8000/api/users', {
+    const deleteApi = await fetch('https://user-management-system-backend-mu.vercel.app/api/users', {
         method: 'DELETE', // Use PATCH for partial updates
         headers: {
             'Content-Type': 'application/json',
