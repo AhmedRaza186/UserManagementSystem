@@ -200,7 +200,7 @@ body {
 
 .side-img {
     width: 45%;
-    background: url('.../assets/banner.png') no-repeat center center;
+    background: url('../assets/banner.png') no-repeat center center;
     background-size: cover;
 }
 
