@@ -99,6 +99,47 @@
         </table>
     </div>
     </div>
+    <div id="viewProfileModal" class="modal-overlay">
+        <div class="modal-content view-modal">
+            <div class="modal-header">
+                <h3>Member Profile</h3>
+                <button class="close-btn closeViewModal">&times;</button>
+            </div>
+            
+            <div class="profile-header-view">
+                <div class="view-avatar-wrapper">
+                    <img src="../defaultuser.png" alt="Profile Picture" id="viewProfilePic">
+                </div>
+                <div class="view-user-basics">
+                    <h2 id="viewFullName">Ahmed Raza</h2>
+                    <p id="viewUserEmail">ahmed@example.com</p>
+                </div>
+            </div>
+
+            <div class="profile-details-grid">
+                <div class="detail-item">
+                    <span class="detail-label">Age</span>
+                    <span class="detail-value" id="viewAge">20</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Phone Number</span>
+                    <span class="detail-value" id="viewPhone">+92 300 1234567</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Joined On</span>
+                    <span class="detail-value" id="viewJoinedDate">Oct 12, 2025</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Verification Status</span>
+                    <span class="detail-value" id="viewStatus">Verified</span>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn-secondary closeViewModal">Close</button>
+            </div>
+        </div>
+    </div>
     <div id="editModal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">

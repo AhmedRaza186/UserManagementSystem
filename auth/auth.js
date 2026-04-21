@@ -190,7 +190,7 @@ async function createUser(fullName, email, age, password) {
 function handleLogin(event) {
     console.log('Login working');
     let [email, password] = inputs
-    if (!email.value.trim() || !password.value.trim()) {
+    if (!email.value.trim() || (!password.value.trim() && password.value != 0)) {
         throwError('All fields are required')
         return
     }
@@ -477,4 +477,4 @@ function otpPageHandler(email) {
         e.preventDefault();
         handleResendOtp(email);
     });
-}
+}

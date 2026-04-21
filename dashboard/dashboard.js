@@ -11,6 +11,12 @@ let closeEditModal = document.querySelectorAll('.closeEditModal')
 let deleteBtn = document.querySelector('#confirmDeleteBtn')
 let searchUser = document.querySelector('#userSearch')
 let filters = document.querySelectorAll('select')
+const viewModal = document.getElementById('viewProfileModal');
+const closeViewModal = document.querySelectorAll('.closeViewModal');
+
+closeViewModal.forEach(e => {
+    e.addEventListener('click', () => viewModal.style.display = 'none');
+})
 
 closeEditModal.forEach(e => {
     e.addEventListener('click', closeModal)
@@ -149,6 +155,12 @@ async function fetchUsers() {
 
                 <td data-label="Actions" class="text-right">
                     <div class="action-btns">
+                        <button class="icon-btn view" data-id="${user._id}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
                         <button class="icon-btn edit ${!isCurrentUser ? 'disabled' : ''}">Edit</button>
                         <button class="icon-btn delete ${!isCurrentUser ? 'disabled' : ''}">Delete</button>
                     </div>
@@ -156,10 +168,18 @@ async function fetchUsers() {
             </tr>`;
         });
 
+        // Store users globally to access them in modal
+        window.allUsers = users.data;
+
 
         userTableBody.addEventListener('click', (e) => {
             console.log(e.target.classList);
 
+            if (e.target.closest('.view')) {
+                const userId = e.target.closest('.view').dataset.id;
+                const userData = window.allUsers.find(u => u._id === userId);
+                if (userData) openViewModal(userData);
+            }
             if (e.target.classList.contains('edit') && !e.target.classList.contains('disabled')) {
                 openModal()
             }
@@ -215,6 +235,23 @@ function openDeleteModalFunc() {
 
 function closeDeleteModalFunc() {
     deleteModal.style.display = 'none';
+}
+
+function openViewModal(user) {
+    const joinedDate = handleDate(user);
+    
+    document.getElementById('viewProfilePic').src = (user.profilePic && user.profilePic.trim() !== "") ? user.profilePic : "../defaultuser.png";
+    document.getElementById('viewFullName').innerText = user.fullName;
+    document.getElementById('viewUserEmail').innerText = user.email;
+    document.getElementById('viewAge').innerText = user.age;
+    document.getElementById('viewPhone').innerText = user.phone ? `+${user.phone}` : 'Not provided';
+    document.getElementById('viewJoinedDate').innerText = joinedDate;
+    
+    const statusEl = document.getElementById('viewStatus');
+    statusEl.innerText = user.isVerified ? 'Verified' : 'Pending';
+    statusEl.className = `detail-value status-badge ${user.isVerified ? 'status-verified' : 'status-pending'}`;
+
+    viewModal.style.display = 'flex';
 }
 
 // Image Preview Logic
