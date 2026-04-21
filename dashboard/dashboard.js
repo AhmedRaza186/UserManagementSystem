@@ -33,19 +33,19 @@ function showToast(message, type = 'error') {
         container.className = 'toast-container';
         document.body.appendChild(container);
     }
-    
+
     // 2. Create the toast
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
     const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
-    
+
     toast.innerHTML = `
     <i class="fas ${icon}"></i>
     <span>${message}</span>
     `;
-    
+
     container.appendChild(toast);
-    
+
     // 3. Remove logic
     setTimeout(() => {
         toast.style.opacity = '0';
@@ -130,11 +130,10 @@ async function fetchUsers() {
                 <td data-label="Member">
                     <div class="user-info">
                         <div class="avatar ${isCurrentUser ? 'my-avatar' : ''}">
-                            ${
-                                user.profilePic && user.profilePic.trim() !== ""
-                                ? `<img src="${user.profilePic}" />`
-                                : `<img src="../defaultuser.png" />`
-                            }
+                            ${user.profilePic && user.profilePic.trim() !== ""
+                    ? `<img src="${user.profilePic}" />`
+                    : `<img src="../assets/defaultuser.png" />`
+                }
                         </div>
                         <div class="user-details">
                         <p class="user-name">
@@ -239,14 +238,14 @@ function closeDeleteModalFunc() {
 
 function openViewModal(user) {
     const joinedDate = handleDate(user);
-    
-    document.getElementById('viewProfilePic').src = (user.profilePic && user.profilePic.trim() !== "") ? user.profilePic : "../defaultuser.png";
+
+    document.getElementById('viewProfilePic').src = (user.profilePic && user.profilePic.trim() !== "") ? user.profilePic : "../assets/defaultuser.png";
     document.getElementById('viewFullName').innerText = user.fullName;
     document.getElementById('viewUserEmail').innerText = user.email;
     document.getElementById('viewAge').innerText = user.age;
     document.getElementById('viewPhone').innerText = user.phone ? `+${user.phone}` : 'Not provided';
     document.getElementById('viewJoinedDate').innerText = joinedDate;
-    
+
     const statusEl = document.getElementById('viewStatus');
     statusEl.innerText = user.isVerified ? 'Verified' : 'Pending';
     statusEl.className = `detail-value status-badge ${user.isVerified ? 'status-verified' : 'status-pending'}`;

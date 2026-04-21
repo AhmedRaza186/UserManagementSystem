@@ -850,6 +850,35 @@ th:nth-child(6), td:nth-child(6) { width: 100%;;justify-content: space-between; 
         font-size: 0.9rem;
     }
 }
+@media (max-width: 400px) {
+    .view-modal {
+        padding: 20px;
+    }
+    
+    .profile-header-view {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .profile-details-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .view-avatar-wrapper {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 600px) {
+    .modal-actions.full-width {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
 @media (min-width: 600px) {
     .modal-actions.full-width {
         flex-direction: row;
