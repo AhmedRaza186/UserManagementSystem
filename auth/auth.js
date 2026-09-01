@@ -66,7 +66,6 @@ function showToast(message, type = 'error') {
 
 // Error handling function
 function throwError(error) {
-    console.log("ERROR TRIGGERED:", error); // 👈 debug
     errorText.style.display = 'block'
     errorText.innerText = error
     setTimeout(() => {
@@ -80,8 +79,6 @@ try {
     flatpickr("#dob", {
         dateFormat: "d/m/Y"
     });
-    console.log(document.querySelector("#dob"));
-    console.log(window.flatpickr);
 
 }
 catch (error) {
@@ -132,12 +129,9 @@ if (formsubmitBtn.innerText === 'Login') {
 
 // Signup handler
 async function handleSignup() {
-    console.log('Signup working');
     let [fullName, email, DOB, password] = inputs
-    console.log(DOB);
 
     const age = calculateAge(DOB)
-    console.log(age);
 
     // Validate data before proceeding
     if (!checkData(fullName, email, age, password,)) {
@@ -161,7 +155,6 @@ async function createUser(fullName, email, age, password) {
         })
 
         const addUserResponse = await addUserApi.json()
-        console.log(addUserResponse);
 
         if (!addUserApi.ok || !addUserResponse.status) {
             showToast(addUserResponse.message || 'Signup failed', "error")
@@ -180,22 +173,16 @@ async function createUser(fullName, email, age, password) {
         showToast('Failed to create user. Please try again later' + error.message, "error")
         return
     }
-
-
-    console.log('Creating user:', { fullName, email, password });
-    // For demonstration, we'll just log it to the console
 }
 
 // Login handler
 function handleLogin(event) {
-    console.log('Login working');
     let [email, password] = inputs
     if (!email.value.trim() || (!password.value.trim() && password.value != 0)) {
         throwError('All fields are required')
         return
     }
     // Validate data before proceeding
-    console.log('user checked, logging in...');
     loginUser(email.value, password.value)
 
 }
@@ -212,7 +199,6 @@ async function loginUser(email, password) {
         })
 
         const loginUserResponse = await loginUserApi.json()
-        console.log(loginUserResponse);
 
         if (!loginUserApi.ok || !loginUserResponse.status) {
             if (loginUserResponse.message === 'Please verify your email first') {
@@ -244,7 +230,6 @@ async function loginUser(email, password) {
 
 // Otp verification handler (simulate API call)
 async function verifyOtp(email) {
-    console.log('click hua');
     let otp = []
     otpInputs.forEach(input => {
         otp.push(input.value)
@@ -261,7 +246,6 @@ async function verifyOtp(email) {
         })
 
         const otpVerificationResponse = await otpVerificationApi.json()
-        console.log(otpVerificationResponse);
 
         // ✅ check success
         if (!otpVerificationApi.ok || !otpVerificationResponse.status) {
@@ -345,7 +329,6 @@ function checkData(fullName, email, age, password) {
     const nameVal = fullName.value.trim()
     const emailVal = email.value.trim()
     const passVal = password.value.trim()
-    console.log(nameVal, passVal, emailVal, age);
 
 
     // 1. Empty fields
@@ -403,7 +386,6 @@ function calculateAge(DOB) {
     ) {
         age--;
     }
-    console.log(age);
 
     return age;
 }
@@ -411,7 +393,7 @@ function calculateAge(DOB) {
 function otpPageHandler(email) {
     signupContainer.style.display = 'none'
     otpContainer.style.display = 'block'
-    
+
     startCountdown(60); // 1 minute countdown
 
 
